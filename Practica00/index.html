@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="pintarLista()">
+    <h1>Hola mundo</h1>
+
+    <p>
+        Aqui veremos js del lado del cliente, es decir codigo que se ejecuta en el navegador
+    </p>
+    <p>
+        Generalmente aqui ve va por información al servidor y se le da formato para presentarla al usuario, se dan notificaciones, validaciones.
+    </p>
+    <button onclick="saludar()">Saludar</button>
+
+    <hr/>
+    <p>Tambien se usa para modificar el DOM, es decir la página web. Obtener información del usuario</p>
+    <label>Nombre</label>
+    <input id="nombre"/>
+    <button onclick="obtenerNombreYSaludar()">Saludar</button>
+
+    <hr/>
+    <p>Pintando una lista</p>
+    <p>Lista del tianguis</p>
+    <ul id="lista">
+        
+    </ul>
+
+    <hr/>
+    <p>Estados</p>
+    <button onclick="obtenerEstadosAsync()">Obtener estados</button>
+    <ul id="estados">
+
+    </ul>
+
+    <script>
+        function saludar(){
+            alert("Hola mundo")
+        }
+
+        function obtenerNombreYSaludar(){
+            let  nombre = document.getElementById('nombre').value
+            alert("Hola "+ nombre)
+        }
+
+        var array = ['platano', 'jicama', 'calabaza']
+        function pintarLista(){
+            let ul = document.getElementById('lista')
+            array.forEach(element => {
+                let li = document.createElement('li')
+                li.innerText = element
+                ul.appendChild(li)
+            });
+        }
+
+        async function obtenerEstadosAsync(){
+            let url = "https://utilidades.vmartinez84.xyz/api/CodigosPostales/Estados"
+            let ul = document.getElementById('estados')
+            console.log("cargando elementos")
+            let response = await fetch(url)
+            console.log("Listo")
+            let estados = await response.json()
+            console.log(estados)
+            estados.forEach(element => {
+                let li = document.createElement('li')
+                li.innerText = element.nombre
+                ul.appendChild(li)
+            });
+        }
+    </script>
+</body>
+</html>
