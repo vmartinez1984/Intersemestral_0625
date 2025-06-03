@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">practica11</string>
+    <string name="title_activity_main">practica11</string>
+    <string name="package_name">xyz.vmartinez84.practica11</string>
+    <string name="custom_url_scheme">xyz.vmartinez84.practica11</string>
+</resources>
